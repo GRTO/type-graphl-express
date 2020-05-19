@@ -1,6 +1,6 @@
 import { Resolver, Arg, Query } from "type-graphql";
 import { FeatureWeight } from "../entities/featureWeight";
-import { GET, BaseURL } from "../utils/api-utils";
+import { GET } from "../utils/api-utils";
 import { getMax, getMin, sortByTime } from "../utils/utils";
 
 @Resolver()
@@ -13,12 +13,11 @@ export class FeatureWeightResolver {
     @Arg("featureLimit") feature_limit: number,
     @Arg("samplingRate") sampling_rate: number
   ) {
-    console.log("Here in getFeatureWeight");
     const riskdata = await GET(
-      `${BaseURL}/api/riskdata?modelId=${modelid}&startTime=${start_time}&endTime=${end_time}&featureLimit=${feature_limit}&samplingRate=${sampling_rate}`
+      `/api/riskdata?modelId=${modelid}&startTime=${start_time}&endTime=${end_time}&featureLimit=${feature_limit}&samplingRate=${sampling_rate}`
     );
     const stats = await GET(
-      `${BaseURL}/api/features/importance/stats?model_id=${modelid}&start_time=${start_time}&end_time=${end_time}`
+      `/api/features/importance/stats?model_id=${modelid}&start_time=${start_time}&end_time=${end_time}`
     );
     const {
       data: { feature_stats },

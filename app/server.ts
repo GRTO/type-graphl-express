@@ -1,11 +1,15 @@
 import { ApolloServer } from "apollo-server-express";
 import Express from "express";
+import dotenv from "dotenv";
 import cors from "cors";
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 import { FeatureWeightResolver } from "./resolvers/featureWeight";
 
 const main = async () => {
+  // Access to our env variables
+  dotenv.config();
+
   const schema = await buildSchema({
     resolvers: [FeatureWeightResolver],
     emitSchemaFile: true,

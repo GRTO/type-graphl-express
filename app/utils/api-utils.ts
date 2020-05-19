@@ -1,21 +1,20 @@
 import fetch, { RequestInit } from "node-fetch";
-// BaseURL
-export const BaseURL = "[BASE-URL]";
 
-const token = `[AUTH-HEADER]`;
 // Build the request header
 const requestHeader = () => {
   return {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-    Cookie:
-      "[COOKIE-SESSION]",
+    Authorization: `Bearer ${process.env.AUTH_HEADER || "[AUTH_HEADER]"}`,
+    Cookie: process.env.COOKIE_SESSION || "[COOKIE_SESSION]",
   };
 };
 
 // Fetch API Utility Function
 const http = async (path: string, args: RequestInit): Promise<any> => {
-  const response = await fetch(path, args);
+  const response = await fetch(
+    `${process.env.SP_BASE_URL || "[BASE_URL]"}${path}`,
+    args
+  );
   if (response.status === 401) {
     return;
   }
