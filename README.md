@@ -1,5 +1,5 @@
 # type-graphl-express
-This a little demo  with type-graphql and express server. Avoding the use of apollo server
+This a little demo  with **type-graphql** and express server. Avoding the use of apollo server
 
 ## Configuration
 Before to run the project, create the **.env** file with the following structure:
