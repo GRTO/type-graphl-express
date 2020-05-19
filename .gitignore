@@ -1,0 +1,12 @@
+# sbt specific
+dist/*
+dist
+
+# Visual Studio Code
+.vscode
+.bloop
+.metals
+*/.bloop/*
+
+# Web UI / Vendor #
+**/node_modules/
