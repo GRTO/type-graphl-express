@@ -11,7 +11,7 @@ AUTH_HEADER=[AUTH_HEADER]
 COOKIE_SESSION=[COOKIE_SESSION]
 ```
 
-**Note:** The name of the _env file_ have to be **.env** for a develop server and **production.env** for a production server.
+**Note:** The name of the _env file_ has to be **.env** for a develop server and **production.env** for a production server.
 
 ## Run the project
 
