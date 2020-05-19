@@ -16,7 +16,7 @@ const main = async () => {
     validate: false,
   });
 
-  const server = new ApolloServer({ schema, playground: true });
+  const server = new ApolloServer({ schema, playground: process.env.NODE_ENV === 'dev' });
   const app = Express();
   // Adding cors to our app
   const corsOptions = {

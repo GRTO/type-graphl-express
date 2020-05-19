@@ -4,8 +4,8 @@
   "description": "A typscript and graphql",
   "main": "server.js",
   "scripts": {
-    "start": "ts-node app/server.ts",
-    "serve": "ts-node app/server.ts",
+    "serve": "cross-env NODE_ENV=dev ts-node app/server.ts",
+    "build": "cross-env NODE_ENV=prod ts-node app/server.ts",
     "watch-node": "nodemon dist/server.js",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
@@ -24,6 +24,7 @@
     "@types/graphql": "^14.5.0",
     "@types/mongoose": "^5.7.20",
     "@types/node": "^13.9.0",
+    "cross-env": "^7.0.2",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
