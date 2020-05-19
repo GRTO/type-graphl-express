@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "ts-node app/server.ts",
-    "serve": "node dist/server.js",
+    "serve": "ts-node app/server.ts",
     "watch-node": "nodemon dist/server.js",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
