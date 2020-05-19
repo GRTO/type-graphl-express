@@ -8,7 +8,10 @@ import { FeatureWeightResolver } from "./resolvers/featureWeight";
 
 const main = async () => {
   // Access to our env variables
-  dotenv.config();
+  // Choose which file are server is going to use
+  dotenv.config({
+    path: process.env.NODE_ENV === "dev" ? ".env" : "production.env",
+  });
 
   const schema = await buildSchema({
     resolvers: [FeatureWeightResolver],
@@ -16,7 +19,10 @@ const main = async () => {
     validate: false,
   });
 
-  const server = new ApolloServer({ schema, playground: process.env.NODE_ENV === 'dev' });
+  const server = new ApolloServer({
+    schema,
+    playground: process.env.NODE_ENV === "dev",
+  });
   const app = Express();
   // Adding cors to our app
   const corsOptions = {
@@ -29,7 +35,11 @@ const main = async () => {
   // Listening the port
   app.listen({ port: 3333 }, () =>
     console.log(
-      `🚀 Server ready and listening at ==> http://localhost:3333${server.graphqlPath}`
+      `🚀 Server ready and listening at ==> http://localhost:3333${
+        server.graphqlPath
+      }, based on the following backend service: ${
+        process.env.SP_BASE_URL || "Not server found"
+      }`
     )
   );
 };
